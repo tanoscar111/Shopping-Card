@@ -2,7 +2,7 @@
 @import "components/loading";
 @import "components/useLocalScroll";
 @import "components/navBar";
-
+@import "components/main";
 html {
   font-size: 62.5%;
 }
@@ -14,4 +14,7 @@ body {
   line-height: 1.8;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+}
+#main_container {
+  position: relative;
 }

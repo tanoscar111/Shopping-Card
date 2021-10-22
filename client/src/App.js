@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Styles/index.scss";
 import Loading from "./component/Loading";
 import useLocalScroll from "./hooks/useLocalScroll";
-import NotificationBar from "./component/Home/notificationBar";
+
 import NavBar from "./component/Home/navBar";
 import Main from "./component/Home/main";
 
@@ -28,14 +28,14 @@ function App() {
   }, [timer]);
   return (
     <>
-      {/* {preloading ? (
+      {preloading ? (
         <Loading />
-      ) : ( */}
-      <div id="main_container" data-scroll-container>
-        <NotificationBar />
-        <NavBar />
-        <Main />
-      </div>
+      ) : (
+        <div id="main_container" data-scroll-container>
+          <NavBar />
+          <Main />
+        </div>
+      )}
     </>
   );
 }

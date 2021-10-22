@@ -4,7 +4,7 @@ import { BiUser } from "react-icons/bi";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 function NavBar() {
   return (
-    <header className="navBar">
+    <header className="navBar" data-scroll-section>
       <div className="navBar__logo">
         <h1>Tan</h1>
       </div>
@@ -17,7 +17,7 @@ function NavBar() {
         </ul>
         <div className="store">
           <ul className="store__list">
-            <li>
+            <li className="store__list--icon1">
               <IoSearchOutline />
             </li>
             <li className="store__list--icon">

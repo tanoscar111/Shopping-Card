@@ -1,0 +1,30 @@
+.main {
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+  &__left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    background-color: #24aeff;
+    &--container {
+      h3 {
+        font-size: 6rem;
+      }
+    }
+  }
+  &__right {
+    padding: 0 !important;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      vertical-align: middle;
+    }
+  }
+}

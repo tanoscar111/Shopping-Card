@@ -110,9 +110,12 @@ body {
 ol,
 ul {
   list-style: none;
-  margin-bottom: 0!important;
+  margin-bottom: 0 !important;
 }
-
+.row {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
 blockquote,
 q {
   quotes: none;
