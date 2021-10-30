@@ -47,7 +47,6 @@ const productSchema = mongoose.Schema({
   },
   reviews: [
     {
-      
       name: {
         type: String,
         required: true,
@@ -62,10 +61,15 @@ const productSchema = mongoose.Schema({
       },
     },
   ],
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
-
+console.log(mongoose.Schema.ObjectId);
 module.exports = mongoose.model("Product", productSchema);
