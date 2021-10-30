@@ -10,6 +10,7 @@ const router = express.Router();
 
 //Rest API Product
 router.route("/products").get(getAllProducts);
+
 router.route("/product/newProduct").post(createProducts);
 router
   .route("/product/:id")
