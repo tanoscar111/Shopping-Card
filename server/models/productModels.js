@@ -31,6 +31,18 @@ const productSchema = mongoose.Schema({
       },
     },
   ],
+  images2: [
+    {
+      public_id: {
+        type: String,
+        required: true,
+      },
+      url: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
   category: {
     type: String,
     required: [true, "Please Enter Product Category"],
@@ -71,5 +83,5 @@ const productSchema = mongoose.Schema({
     default: Date.now,
   },
 });
-console.log(mongoose.Schema.ObjectId);
+
 module.exports = mongoose.model("Product", productSchema);
