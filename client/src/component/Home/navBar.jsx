@@ -4,7 +4,7 @@ import { BiUser } from "react-icons/bi";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 function NavBar() {
   return (
-    <header className="navBar"data-scroll-section data-scroll-section-id="section0">
+    <header className="navBar">
       <div className="navBar__logo">
         <h1>Tan</h1>
       </div>

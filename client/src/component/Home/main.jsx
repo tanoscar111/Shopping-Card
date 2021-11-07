@@ -1,19 +1,18 @@
 import React from "react";
 import mainJPG from "../../Images/main.jpg";
-
 import heroJpg1 from "../../Images/HomePage/home1x.png";
 import heroJpg2 from "../../Images/HomePage/home2.png";
 import heroJpg3 from "../../Images/HomePage/4599547.jpg";
 import heroJpg4 from "../../Images/HomePage/hero4.jpg";
+import Hero from "./hero";
+import Flickitys from "./flickitys";
 function Main() {
- 
   return (
     <>
       <section
         className="main"
         data-scroll-section
         data-scroll-section-id="section1"
-        
       >
         <div className="row">
           <div className="col-md-5 main__left">
@@ -27,14 +26,14 @@ function Main() {
                       generation of BIPOC visionaries.
                     </p>
                   </div>
-                  <div className="butonAmimation">
+                  <div className="butonAmimation fadeIn">
                     <p>Learn More</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-md-7 main__right">
+          <div className="col-md-7 main__right ">
             <img src={mainJPG} alt="mainJPG" data-scroll />
           </div>
         </div>
@@ -43,14 +42,15 @@ function Main() {
         className="main__hero"
         data-scroll-section
         data-scroll-section-id="section2"
-        
       >
         <div className="row main__hero--container">
           <div className="main__hero--container__left col-md-6">
-            <div className="content" >
+            <div className="content">
               <div className="heading-group ">
-                <h2 className="fadeIn" >MINDFUL</h2>
-                <div className="dicription">
+                <h2 className="fadeIn isread" data-scroll>
+                  MINDFUL
+                </h2>
+                <div className="dicription fadeIn">
                   <p>
                     Daily reminders to practice being present. Proceeds donated
                     to raising awareness on mental health.
@@ -98,6 +98,8 @@ function Main() {
           </div>
         </div>
       </section>
+      <Hero />
+      <Flickitys />
     </>
   );
 }

@@ -9,7 +9,7 @@ export default function useLocalScroll(start) {
       el: localEL,
       smooth: true,
       multiplier: 1,
-      class: "isread",
+      class: "is-reveal",
     });
     local.scrollTo(localEL);
   }, [start]);

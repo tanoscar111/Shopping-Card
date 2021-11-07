@@ -6,6 +6,8 @@ import useLocalScroll from "./hooks/useLocalScroll";
 
 import NavBar from "./component/Home/navBar";
 import Main from "./component/Home/main";
+import SplitText from "./utils/split3.min.js";
+import gsap from "gsap";
 
 function App() {
   const ref = useRef(null);
@@ -13,6 +15,26 @@ function App() {
 
   useLocalScroll(!preloader);
 
+  useEffect(() => {
+    const split = new SplitText(".fadeIn", {
+      type: "lines",
+      linesClass: "lineChildren",
+    });
+    const splitParent = new SplitText(".fadeIn", {
+      type: "lines",
+      linesClass: "lineParent",
+    });
+    gsap.to(split.lines, {
+      duration: 1,
+      y: 0,
+      opacity: 1,
+      stagger: 0.2,
+      ease: "power2",
+    });
+    gsap.to(splitParent.lines, {
+      ease: "power2",
+    });
+  });
   useEffect(() => {
     if (!preloader && ref) {
       if (typeof window === "undefined" || !window.document) {
@@ -30,14 +52,14 @@ function App() {
     setPreload(false);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     id.current = window.setInterval(() => {
       setTimer((time) => time - 1);
     }, 1800);
     return () => clear();
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (timer === 0) {
       clear();
     }
@@ -46,6 +68,7 @@ function App() {
   if (typeof window === "undefined" || !window.document) {
     return null;
   }
+
   return (
     <>
       {preloader ? (
@@ -57,7 +80,7 @@ function App() {
             data-scroll-container
             data-scroll-direction="vertical"
             ref={ref}
-            style={{  scrollBehavior: "auto" }}
+            style={{ scrollBehavior: "auto" }}
           >
             <NavBar />
             <Main />
