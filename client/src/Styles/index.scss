@@ -1,20 +1,96 @@
 @import "components/reset";
 @import "components/loading";
-@import "components/useLocalScroll";
+@import "components/fonts";
 @import "components/navBar";
 @import "components/main";
+@import "components/butonAnimation";
 html {
   font-size: 62.5%;
+  overflow-y: hidden;
 }
 body {
   color: #4a4a4a;
-  font-family: mabry-regular, Arial, Sans-Serif;
+  font-family: "Mabry Pro", Arial, Sans-Serif;
   font-size: 1.8rem;
   font-weight: 400;
   line-height: 1.8;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  background: #fff;
+  overflow-y: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 #main_container {
   position: relative;
+}
+section {
+  height: 100%;
+  .section-header {
+    margin-bottom: 50px;
+  }
+}
+.butonAmimation {
+  display: inline-block;
+  position: relative;
+  color: #362930;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding-bottom: 2px;
+  height: 45px;
+
+  max-width: 225px;
+  width: 100%;
+  margin-top: 52px;
+  font-weight: 600;
+  p {
+    font-size: 1.6rem;
+    display: inline-block;
+    color: #ffff;
+    letter-spacing: 0.4px;
+    text-align: left;
+    display: inline-block;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 0%;
+    background: #ffff;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition-delay: 0s;
+    transition: transform 0.55s cubic-bezier(0.65, 0.005, 0.35, 0.995);
+  }
+  &:hover::before {
+    width: 100%;
+    transform: scaleX(1);
+    transition-delay: 0.25s;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: #ffff;
+    transform-origin: right;
+    transition-delay: 0.25s;
+    transform: scaleX(1);
+    transition: transform 0.55s cubic-bezier(0.65, 0.005, 0.35, 0.995);
+  }
+
+  &:hover::after {
+    width: 0;
+    transform: scaleX(0);
+    transition-delay: 0.25s;
+  }
 }

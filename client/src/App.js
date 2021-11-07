@@ -8,33 +8,61 @@ import NavBar from "./component/Home/navBar";
 import Main from "./component/Home/main";
 
 function App() {
-  const [preloading, setPreLoading] = useState(true);
-  const [timer, setTimer] = useState(3);
-  const id = useRef(null);
-  const clearTime = () => {
+  const ref = useRef(null);
+  const [preloader, setPreload] = useState(true);
+
+  useLocalScroll(!preloader);
+
+  useEffect(() => {
+    if (!preloader && ref) {
+      if (typeof window === "undefined" || !window.document) {
+        return;
+      }
+    }
+  }, [preloader]);
+
+  const [timer, setTimer] = React.useState(3);
+
+  const id = React.useRef(null);
+
+  const clear = () => {
     window.clearInterval(id.current);
-    setPreLoading(false);
+    setPreload(false);
   };
-  useLocalScroll(!preloading);
-  useEffect(() => {
+
+  React.useEffect(() => {
     id.current = window.setInterval(() => {
-      setTimer((timer) => timer - 1);
-    }, 1900);
+      setTimer((time) => time - 1);
+    }, 1800);
+    return () => clear();
   }, []);
-  useEffect(() => {
+
+  React.useEffect(() => {
     if (timer === 0) {
-      clearTime();
+      clear();
     }
   }, [timer]);
+
+  if (typeof window === "undefined" || !window.document) {
+    return null;
+  }
   return (
     <>
-      {preloading ? (
+      {preloader ? (
         <Loading />
       ) : (
-        <div id="main_container" data-scroll-container>
-          <NavBar />
-          <Main />
-        </div>
+        <>
+          <div
+            id="main_container"
+            data-scroll-container
+            data-scroll-direction="vertical"
+            ref={ref}
+            style={{  scrollBehavior: "auto" }}
+          >
+            <NavBar />
+            <Main />
+          </div>
+        </>
       )}
     </>
   );
