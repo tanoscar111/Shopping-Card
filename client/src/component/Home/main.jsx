@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import mainJPG from "../../Images/main.jpg";
 import heroJpg1 from "../../Images/HomePage/home1x.png";
 import heroJpg2 from "../../Images/HomePage/home2.png";
 import heroJpg3 from "../../Images/HomePage/4599547.jpg";
 import heroJpg4 from "../../Images/HomePage/hero4.jpg";
 import Hero from "./hero";
-import Flickitys from "./flickitys";
+import Slider from "./slider";
+import { useDispatch, useSelector } from "react-redux";
+import {fetchProductsPending} from "../../redux/slices/productsSlices";
+
 function Main() {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.products);
+  console.log("____________________>Products", products);
+  useEffect(() => {
+    dispatch(fetchProductsPending());
+  }, [dispatch]);
   return (
     <>
       <section
@@ -99,7 +108,7 @@ function Main() {
         </div>
       </section>
       <Hero />
-      <Flickitys />
+      <Slider />
     </>
   );
 }

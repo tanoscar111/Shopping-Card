@@ -9,6 +9,10 @@ import Main from "./component/Home/main";
 import SplitText from "./utils/split3.min.js";
 import gsap from "gsap";
 
+
+// Import Swiper styles
+import "swiper/swiper-bundle.css";
+import "swiper/swiper.scss"
 function App() {
   const ref = useRef(null);
   const [preloader, setPreload] = useState(true);
