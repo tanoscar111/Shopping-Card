@@ -7,13 +7,12 @@ import {
 } from "../slices/productsSlices";
 
 function* fetchProducts(action) {
-  const URL = "http://localhost:5000";
+  const URL = "http://localhost:4000";
 
   try {
     const { data } = yield axios.get(`${URL}/products`);
-   
+
     const products = data;
-    console.log("TCL: function*fetchProducts -> products", products)
 
     yield put(fetchProductsSuccess({ products: products }));
   } catch (e) {
