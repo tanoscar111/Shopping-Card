@@ -7,12 +7,13 @@ import heroJpg4 from "../../Images/HomePage/hero4.jpg";
 import Hero from "./hero";
 import Slider from "./slider";
 import { useDispatch, useSelector } from "react-redux";
-import {fetchProductsPending} from "../../redux/slices/productsSlices";
+import { fetchProductsPending } from "../../redux/slices/productsSlices";
 
 function Main() {
   const dispatch = useDispatch();
+
   const products = useSelector((state) => state.products.products);
-  console.log("____________________>Products", products);
+
   useEffect(() => {
     dispatch(fetchProductsPending());
   }, [dispatch]);

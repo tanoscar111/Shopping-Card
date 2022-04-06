@@ -1,22 +1,29 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 
 import "./Styles/index.scss";
 import Loading from "./component/Loading";
 import useLocalScroll from "./hooks/useLocalScroll";
 
-import NavBar from "./component/Home/navBar";
-import Main from "./component/Home/main";
+import { Router, Switch, Route, Link } from "react-router-dom";
 import SplitText from "./utils/split3.min.js";
 import gsap from "gsap";
-
-
+import HomePage from "./pages/HomePage";
+import Product from "./pages/Product";
+import ProductDetail from "./pages/ProductDetail";
 // Import Swiper styles
 import "swiper/swiper-bundle.css";
-import "swiper/swiper.scss"
+import "swiper/swiper.scss";
+import NavBar from "./component/Home/navBar";
 function App() {
   const ref = useRef(null);
   const [preloader, setPreload] = useState(true);
+  const [isShowHeader, setIsShowHeader] = useState(false);
 
+  const [activePage, setActivePage] = useState("/");
+
+  const handelActiveNav = useCallback(() => {
+    setIsShowHeader(!isShowHeader);
+  }, [isShowHeader]);
   useLocalScroll(!preloader);
 
   useEffect(() => {
@@ -79,16 +86,7 @@ function App() {
         <Loading />
       ) : (
         <>
-          <div
-            id="main_container"
-            data-scroll-container
-            data-scroll-direction="vertical"
-            ref={ref}
-            style={{ scrollBehavior: "auto" }}
-          >
-            <NavBar />
-            <Main />
-          </div>
+          <HomePage />
         </>
       )}
     </>

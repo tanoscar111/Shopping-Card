@@ -26,6 +26,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+
     ul {
       display: flex;
       align-items: center;
@@ -36,18 +38,60 @@
         font-size: 1.4rem;
         color: #4a4a4a;
         transition: color 0.2s cubic-bezier(0.65, 0.005, 0.35, 0.995);
+        cursor: pointer;
+        width: 100%;
+        position: relative;
       }
       li:nth-child(2) {
-        padding-left: 36px;
+        margin-left: 36px;
       }
       li:nth-child(3) {
-        padding-left: 36px;
-        padding-right: 36px;
+        margin-left: 36px;
+        margin-right: 36px;
       }
     }
+    &--item::after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: #fff;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition-delay: 0s;
+      transition: transform 0.55s cubic-bezier(0.65, 0.005, 0.35, 0.995);
+      transition: width 0.3s;
+    }
+    &--item:hover::after {
+      width: 100%;
+      transform: scaleX(1);
+      transition-delay: 0.25s;
+    }
+    .active::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background: #fff;
+
+      transition: transform 0.55s cubic-bezier(0.65, 0.005, 0.35, 0.995);
+      transition: width 0.3s;
+    }
+
     .store {
       font-size: 14px;
       .store__list {
+        display: flex;
+        align-items: center;
+        height: 32px;
+        padding: 10px;
+
         &--icon1 {
           font-size: 1.25em;
         }
